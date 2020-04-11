@@ -3,7 +3,7 @@ package kafka
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.streaming.StreamingQuery
 
-class KafkaSink {
+object KafkaSink {
   def loadStreamToHDFS(dfInputStream: DataFrame): StreamingQuery = {
     dfInputStream
       .writeStream
