@@ -13,6 +13,9 @@ libraryDependencies ++= Seq( "org.apache.spark" %% "spark-core" % "2.4.5",
   //Delta lake library
   "io.delta" %% "delta-core" % "0.5.0",
 
+  //kafka library
+  "org.apache.spark" %% "spark-sql-kafka-0-10" % "2.4.5",
+
   //Libraries needed for AWS S3 connectivity, all libraries here should be compatible versions
   "org.apache.hadoop" % "hadoop-common" % "3.1.0",
   "com.amazonaws" % "aws-java-sdk-bundle" % "1.11.271",
