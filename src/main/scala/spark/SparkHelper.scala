@@ -8,7 +8,8 @@ object SparkHelper {
     val conf = new SparkConf()
       .setAppName("Structured Streaming to Delta Lake")
       .setMaster("local[*]")
-      .set("spark.delta.logStore.class", "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore")
+      //.set("spark.delta.logStore.class", "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore")
+      .set("spark.delta.logStore.class", "org.apache.spark.sql.delta.storage.HDFSLogStore")
 
     val spark = SparkSession
       .builder()
