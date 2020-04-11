@@ -16,7 +16,7 @@ object SparkHelper {
       .config(conf)
       .getOrCreate()
 
-    spark.sparkContext.setLogLevel("INFO")
+    spark.sparkContext.setLogLevel("WARN")
     // return spark session
     spark
   }
