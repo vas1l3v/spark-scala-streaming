@@ -1,6 +1,7 @@
 package kafka
 
 import org.apache.spark.sql.DataFrame
+import org.apache.spark.sql.functions.from_json
 import spark.SparkHelper
 
 object KafkaSource {
@@ -17,6 +18,8 @@ object KafkaSource {
       .option("enable.auto.commit", false)
       .option(startingOption, partitionsAndOffsets)
       .load()
-      .selectExpr("CAST(key as STRING)", "CAST(value as STRING)")
+      .select($"value".cast("string"))
+      .select(from_json($"value", KafkaHelper.gameSchema).alias("value")) //parse json coming from kafka
+      .select("value.*")
   }
 }
