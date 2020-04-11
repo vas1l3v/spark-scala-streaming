@@ -4,7 +4,7 @@ import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 
 object SparkHelper {
-  def getAndConfigureSparkSession() = {
+  def getAndConfigureSparkSession(): SparkSession = {
     val conf = new SparkConf()
       .setAppName("Structured Streaming to Delta Lake")
       .setMaster("local[*]")
@@ -21,7 +21,7 @@ object SparkHelper {
     spark
   }
 
-  def getSparkSession() = {
+  def getSparkSession(): SparkSession = {
     SparkSession
       .builder()
       .getOrCreate()
