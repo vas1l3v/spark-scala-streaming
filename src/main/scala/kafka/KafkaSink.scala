@@ -7,11 +7,12 @@ object KafkaSink {
   def loadStreamToHDFS(dfInputStream: DataFrame): StreamingQuery = {
     dfInputStream
       .writeStream
-      .queryName("Debug stream from kafka")
-      .format("delta")
+      .queryName("Load kafka stream to sink delta table")
       .outputMode("append")
-      .option("checkpointLocation", "delta path")
-      .start("delta path")
+      .format("delta")
+      .option("checkpointLocation", "hdfs://localhost:9000/streams/games/_checkpoints")
+      .option("path", "hdfs://localhost:9000/streams/games")
+      .start()
   }
 
   def debugStream(dfInputStream: DataFrame): StreamingQuery = {

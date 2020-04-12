@@ -9,7 +9,7 @@ object KafkaSource {
 
   import spark.implicits._
 
-  def readKafkaStream(startingOption: String = "startingOffsets", partitionsAndOffsets: String = "earliest"): DataFrame = {
+  def readKafkaStream(startingOption: String = "startingOffsets", partitionsAndOffsets: String = "latest"): DataFrame = {
     spark
       .readStream
       .format("kafka")
