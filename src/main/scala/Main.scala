@@ -8,9 +8,11 @@ import kafka.{KafkaHelper, KafkaSink, KafkaSource}
 //job entry
 object Main extends App{
   val spark = SparkHelper.getAndConfigureSparkSession()
+  //spark.read.csv("hdfs://localhost:9000/source/fifa/players.2019.csv").show
 
-  val kafkaStream = KafkaSource.readKafkaStream()
-  KafkaSink.debugStream(kafkaStream)
+  val dfKafkaStream = KafkaSource.readKafkaStream()
+  KafkaSink.loadStreamToHDFS(dfKafkaStream)
+  KafkaSink.debugStream(dfKafkaStream)
 
   spark.streams.awaitAnyTermination()
 
